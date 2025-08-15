@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login - Panificadora</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5deb3; /* cor bege clara para "pão" */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 320px;
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #d2691e; /* cor marrom pão */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #5a3e1b;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #d2b48c;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #a0522d;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            background-color: #d2691e;
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #a0522d;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login Panificadora</h2>
+        <form>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required />
+
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required />
+
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+</body>
+</html>

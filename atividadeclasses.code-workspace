@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "../../../../xampp/htdocs/atividadeclasses"
+		},
+		{
+			"path": "../../Downloads/site-CrisDecora-main/site-CrisDecora-main/SITE CRIS DECORA"
+		},
+		{
+			"path": "../../Downloads/panificadora-main"
+		},
+		{
+			"path": "../../../../xampp/htdocs/classes"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "SITE CRIS DECORA"
+	}
+}
