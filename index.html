@@ -1,94 +1,203 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Login - Panificadora</title>
-    <style>
-        /* Reset básico */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5deb3; /* cor bege clara para "pão" */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .login-container {
-            background: white;
-            padding: 30px 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            width: 320px;
-        }
-
-        .login-container h2 {
-            text-align: center;
-            margin-bottom: 25px;
-            color: #d2691e; /* cor marrom pão */
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #5a3e1b;
-        }
-
-        input[type="email"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 2px solid #d2b48c;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
-        }
-
-        input[type="email"]:focus,
-        input[type="password"]:focus {
-            border-color: #a0522d;
-            outline: none;
-        }
-
-        button {
-            width: 100%;
-            background-color: #d2691e;
-            color: white;
-            padding: 12px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #a0522d;
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Controle de Estoque - Panificadora</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f5deb3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        min-height: 100vh;
+        margin: 0;
+    }
+    h1 {
+        color: #d2691e;
+        margin-bottom: 20px;
+    }
+    .container {
+        background: white;
+        padding: 25px 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        width: 400px;
+        margin-bottom: 30px;
+    }
+    label {
+        display: block;
+        margin-top: 15px;
+        margin-bottom: 6px;
+        color: #5a3e1b;
+        font-weight: bold;
+    }
+    input[type="text"], input[type="number"], input[type="search"] {
+        width: 100%;
+        padding: 8px;
+        border: 2px solid #d2b48c;
+        border-radius: 5px;
+        font-size: 14px;
+        transition: border-color 0.3s ease;
+    }
+    input[type="text"]:focus, input[type="number"]:focus, input[type="search"]:focus {
+        border-color: #a0522d;
+        outline: none;
+    }
+    button {
+        margin-top: 20px;
+        width: 100%;
+        background-color: #d2691e;
+        color: white;
+        padding: 12px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+    button:hover {
+        background-color: #a0522d;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+    th, td {
+        text-align: left;
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+        color: #5a3e1b;
+    }
+    th {
+        background-color: #d2691e;
+        color: white;
+    }
+    #msg {
+        margin-top: 10px;
+        color: green;
+        font-weight: bold;
+        text-align: center;
+    }
+</style>
 </head>
 <body>
-    <div class="login-container">
-        <h2>Login Panificadora</h2>
-        <form>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required />
 
-            <label for="senha">Senha</label>
-            <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required />
+<h1>Controle de Estoque - Panificadora</h1>
 
-            <button type="submit">Entrar</button>
-        </form>
-    </div>
+<div class="container">
+    <h2>Cadastro de Produto</h2>
+    <form id="formProduto">
+        <label for="nome">Nome do Produto</label>
+        <input type="text" id="nome" required placeholder="Ex: Pão Francês" />
+
+        <label for="quantidade">Quantidade</label>
+        <input type="number" id="quantidade" min="1" required placeholder="Ex: 20" />
+
+        <label for="preco">Preço (R$)</label>
+        <input type="number" id="preco" min="0" step="0.01" required placeholder="Ex: 0.50" />
+
+        <button type="submit">Adicionar Produto</button>
+    </form>
+    <div id="msg"></div>
+</div>
+
+<div class="container">
+    <h2>Buscar Produto</h2>
+    <input type="search" id="buscar" placeholder="Digite o nome do produto" />
+    <table id="tabelaProdutos">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Quantidade</th>
+                <th>Preço (R$)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Produtos vão aparecer aqui -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+    const formProduto = document.getElementById('formProduto');
+    const nomeInput = document.getElementById('nome');
+    const quantidadeInput = document.getElementById('quantidade');
+    const precoInput = document.getElementById('preco');
+    const tabelaProdutos = document.querySelector('#tabelaProdutos tbody');
+    const buscarInput = document.getElementById('buscar');
+    const msg = document.getElementById('msg');
+
+    // Carregar produtos do LocalStorage
+    let produtos = JSON.parse(localStorage.getItem('produtosPanificadora')) || [];
+
+    function salvarProdutos() {
+        localStorage.setItem('produtosPanificadora', JSON.stringify(produtos));
+    }
+
+    function mostrarProdutos(lista) {
+        tabelaProdutos.innerHTML = '';
+        if(lista.length === 0){
+            tabelaProdutos.innerHTML = '<tr><td colspan="3" style="text-align:center; color:#a0522d;">Nenhum produto encontrado</td></tr>';
+            return;
+        }
+        lista.forEach(prod => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${prod.nome}</td>
+                <td>${prod.quantidade}</td>
+                <td>${prod.preco.toFixed(2)}</td>
+            `;
+            tabelaProdutos.appendChild(tr);
+        });
+    }
+
+    function limparFormulario() {
+        nomeInput.value = '';
+        quantidadeInput.value = '';
+        precoInput.value = '';
+    }
+
+    formProduto.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nome = nomeInput.value.trim();
+        const quantidade = parseInt(quantidadeInput.value);
+        const preco = parseFloat(precoInput.value);
+
+        // Verificar se produto já existe (por nome)
+        const indexExistente = produtos.findIndex(p => p.nome.toLowerCase() === nome.toLowerCase());
+        if(indexExistente > -1){
+            // Atualizar quantidade e preço
+            produtos[indexExistente].quantidade += quantidade;
+            produtos[indexExistente].preco = preco; // Atualiza preço para o último informado
+            msg.textContent = `Produto "${nome}" atualizado!`;
+        } else {
+            produtos.push({nome, quantidade, preco});
+            msg.textContent = `Produto "${nome}" adicionado!`;
+        }
+        salvarProdutos();
+        mostrarProdutos(produtos);
+        limparFormulario();
+
+        setTimeout(() => {
+            msg.textContent = '';
+        }, 3000);
+    });
+
+    buscarInput.addEventListener('input', () => {
+        const filtro = buscarInput.value.trim().toLowerCase();
+        const filtrados = produtos.filter(prod => prod.nome.toLowerCase().includes(filtro));
+        mostrarProdutos(filtrados);
+    });
+
+    // Mostrar todos os produtos ao carregar a página
+    mostrarProdutos(produtos);
+</script>
+
 </body>
 </html>
+
